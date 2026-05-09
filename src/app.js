@@ -5,7 +5,7 @@ const h = React.createElement;
 
 const profile = {
   name: "Abu Taha",
-  title: "Python & Django Developer | AI Enthusiast | Web Developer",
+  title: "Python & Django Developer | AI Enthusiast | Data Science",
   email: "tahaabu930@gmail.com",
   phone: "6206483270",
   location: "Kolkata, West Bengal",
@@ -25,6 +25,8 @@ const skills = [
   ["Claude AI", 78],
   ["Perplexity AI", 76],
   ["Blackbox AI", 74],
+  ["Agentic AI", 87],
+  ["RAG Pipleline", 87],
 ];
 
 const projects = [
