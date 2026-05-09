@@ -1,0 +1,19 @@
+{
+  "name": "abu-taha-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ultra modern React portfolio for Abu Taha.",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "framer-motion": "latest",
+    "three": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {}
+}
