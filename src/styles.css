@@ -538,9 +538,23 @@ p {
 }
 
 .contact-list a,
+.contact-list button,
 .contact-list span {
   width: fit-content;
   color: var(--muted);
+}
+
+.contact-list button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.contact-list a:hover,
+.contact-list button:hover {
+  color: var(--cyan);
 }
 
 .contact-form {
@@ -832,6 +846,7 @@ p {
   }
 
   .contact-list a,
+  .contact-list button,
   .contact-list span {
     max-width: 100%;
     overflow-wrap: anywhere;

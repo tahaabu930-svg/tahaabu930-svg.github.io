@@ -7,7 +7,7 @@ const profile = {
   name: "Abu Taha",
   title: "Python & Django Developer | AI Enthusiast | Data Science",
   email: "tahaabu930@gmail.com",
-  phone: "6206483270",
+  whatsapp: "916206483270",
   location: "Kolkata, West Bengal",
 };
 
@@ -155,7 +155,7 @@ function Hero() {
       ),
       h("div", { className: "hero-actions" },
         h("a", { className: "button primary", href: "#projects" }, "Explore Projects"),
-        h("a", { className: "button ghost", href: "mailto:tahaabu930@gmail.com?subject=Resume request" }, "Download Resume"),
+        h("a", { className: "button ghost", href: "./Abu_Taha_Resume.pdf", download: "Abu_Taha_Resume.pdf" }, "Download Resume"),
         h("a", { className: "button subtle", href: "#contact" }, "Contact Me")
       )
     ),
@@ -250,21 +250,43 @@ function Education() {
 }
 
 function Contact() {
+  const sendWhatsAppMessage = (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const name = data.get("name")?.trim() || "Portfolio visitor";
+    const email = data.get("email")?.trim() || "Not provided";
+    const message = data.get("message")?.trim() || "Hi Abu, I visited your portfolio and would like to connect.";
+    const text = encodeURIComponent(`Hello Abu Taha,
+
+Name: ${name}
+Email: ${email}
+Message: ${message}`);
+
+    window.open(`https://wa.me/${profile.whatsapp}?text=${text}`, "_blank", "noopener,noreferrer");
+  };
+
+  const openWhatsApp = () => {
+    const text = encodeURIComponent("Hi Abu, I visited your portfolio and would like to connect.");
+    window.open(`https://wa.me/${profile.whatsapp}?text=${text}`, "_blank", "noopener,noreferrer");
+  };
+
   return h("section", { id: "contact", className: "section contact reveal" },
     h("div", null,
       h("p", { className: "eyebrow" }, "Contact"),
       h("h2", null, "Let's build useful software and thoughtful AI experiences."),
       h("div", { className: "contact-list" },
         h("a", { href: `mailto:${profile.email}` }, profile.email),
-        h("a", { href: `tel:${profile.phone}` }, profile.phone),
+        h("button", { type: "button", onClick: openWhatsApp }, "Message on WhatsApp"),
         h("span", null, profile.location)
       )
     ),
-    h("form", { className: "contact-form", onSubmit: (event) => event.preventDefault() },
-      h("input", { placeholder: "Your name", "aria-label": "Your name" }),
-      h("input", { placeholder: "Your email", type: "email", "aria-label": "Your email" }),
-      h("textarea", { placeholder: "Tell me about the opportunity", "aria-label": "Message" }),
-      h("button", { className: "button primary", type: "submit" }, "Send Message")
+    h("form", { className: "contact-form", onSubmit: sendWhatsAppMessage },
+      h("input", { name: "name", placeholder: "Your name", "aria-label": "Your name", required: true }),
+      h("input", { name: "email", placeholder: "Your email", type: "email", "aria-label": "Your email", required: true }),
+      h("textarea", { name: "message", placeholder: "Tell me about the opportunity", "aria-label": "Message", required: true }),
+      h("button", { className: "button primary", type: "submit" }, "Send via WhatsApp")
     )
   );
 }
